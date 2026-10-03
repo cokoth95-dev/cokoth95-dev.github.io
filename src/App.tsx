@@ -11,7 +11,9 @@ import {
   Cpu, 
   Database, 
   Terminal,
-  CheckCircle2
+  CheckCircle2,
+  Phone,
+  MessageCircle
 } from 'lucide-react';
 
 function GithubIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -28,7 +30,10 @@ export function App() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const contactEmail = 'thesno254@gmail.com'; // Default contact email, editable
+  const contactEmail = 'cokoth95@gmail.com';
+  const phoneNumber = '+254741937102';
+  const whatsappNumber = '+254702090361';
+  const whatsappLink = `https://wa.me/254702090361?text=${encodeURIComponent("Hello Cokoth, I checked your portfolio and would like to discuss a project / role.")}`;
   const githubUsername = 'cokoth95-dev';
 
   const categories = ['All', 'Full-Stack', 'Fintech & SACCO', 'Python & Desktop', 'Browser Extension'];
@@ -347,23 +352,61 @@ export function App() {
             I am currently open to full-stack engineering roles, contract projects, and architecture reviews. Let's discuss your roadmap.
           </p>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             <a
               href={`mailto:${contactEmail}`}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-semibold text-sm transition-all duration-200 shadow-xl shadow-orange-600/30 cursor-pointer"
+              className="flex items-center gap-3 p-4 rounded-xl bg-orange-600/15 hover:bg-orange-600 border border-orange-500/30 hover:border-orange-500 text-orange-400 hover:text-white transition group"
             >
-              <Mail className="w-4 h-4" />
-              <span>thesno254@gmail.com</span>
+              <div className="p-2 rounded-lg bg-orange-500/20 group-hover:bg-white/20 text-orange-400 group-hover:text-white">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div className="text-left overflow-hidden">
+                <div className="text-[11px] font-mono-code text-neutral-400 uppercase">Email</div>
+                <div className="text-xs font-semibold truncate text-white">{contactEmail}</div>
+              </div>
+            </a>
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 rounded-xl bg-emerald-600/15 hover:bg-emerald-600 border border-emerald-500/30 hover:border-emerald-500 text-emerald-400 hover:text-white transition group"
+            >
+              <div className="p-2 rounded-lg bg-emerald-500/20 group-hover:bg-white/20 text-emerald-400 group-hover:text-white">
+                <MessageCircle className="w-5 h-5" />
+              </div>
+              <div className="text-left overflow-hidden">
+                <div className="text-[11px] font-mono-code text-neutral-400 uppercase">WhatsApp</div>
+                <div className="text-xs font-semibold truncate text-white">{whatsappNumber}</div>
+              </div>
+            </a>
+
+            <a
+              href={`tel:${phoneNumber}`}
+              className="flex items-center gap-3 p-4 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-200 transition group"
+            >
+              <div className="p-2 rounded-lg bg-neutral-800 group-hover:bg-neutral-700 text-orange-400">
+                <Phone className="w-5 h-5" />
+              </div>
+              <div className="text-left overflow-hidden">
+                <div className="text-[11px] font-mono-code text-neutral-400 uppercase">Phone / Call</div>
+                <div className="text-xs font-semibold truncate text-white">{phoneNumber}</div>
+              </div>
             </a>
 
             <a
               href={`https://github.com/${githubUsername}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 text-neutral-200 font-medium text-sm transition cursor-pointer"
+              className="flex items-center gap-3 p-4 rounded-xl bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 text-neutral-200 transition group"
             >
-              <GithubIcon className="w-4 h-4" />
-              <span>github.com/{githubUsername}</span>
+              <div className="p-2 rounded-lg bg-neutral-800 group-hover:bg-neutral-700 text-orange-400">
+                <GithubIcon className="w-5 h-5" />
+              </div>
+              <div className="text-left overflow-hidden">
+                <div className="text-[11px] font-mono-code text-neutral-400 uppercase">GitHub</div>
+                <div className="text-xs font-semibold truncate text-white">@{githubUsername}</div>
+              </div>
             </a>
           </div>
         </div>
